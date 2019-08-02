@@ -7,31 +7,36 @@
 
 <body>
 
-
+<h1> WELCOME TO THE PSYCHIC GAME </h1>
 
   <div> 
 
-    <p id="userguess-text"> </p>
-    <p id="computerchoice-Text"> </p>
+    <p id="userguess-text">                 </p>
+    <p id="computerchoice-Text">            </p>
+    <p id="totalwins-text">                 </p>
+    <p id="totalloses-text">                </p>
+    <p id="guessesleft-text">               </p>
 
   </div>
 -->
 
     <script type="text/javascript">
 
-      document.write("Welcome to the Psychic Game"); 
-
-
-
-    var computerChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+     
+     var computerChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
         
         
     var userGuessText = document.getElementById("userguess-text");
     var computerChoiceText = document.getElementById("computerchoice-Text");
+    var totalWins = document.getElementById("totalwins-text");
+    var totalLoses = document.getElementById("totalloses-text");
+    var guessesLeft = document.getElementById("guessesleft-text");
+    
       
       
           var userScore = 0;
           var computerScore = 0;
+          var guesses = 5;
 
 
         
@@ -44,23 +49,31 @@
         var computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
 
 
-            if (computerGuess === userGuess) {
+            if (userGuess === computerGuess) {
+         
 
-              //  alert("User score" + userScore);
-                userGuessText.textContent = "You chose" + userGuess;
-                 userScore++;
+                    userScore++;
+
+                    guesses--;
 
             }
 
-            else {
-                computerChoiceText.textContent = "Computer chose" + computerGuess;
+            if (userGuess !== computerGuess) { 
+               
                 computerScore++;
 
             }
+
+        userGuessText.textContent = "You chose" + userGuess;
+        computerChoiceText.textContent = "Computer chose" + computerGuess;
+        totalWins.textContent = "Wins:" + userScore;
+        totalLoses.textContent = "Loses:" + computerScore;
+
+
+
         };
 
-
-
+       
 
 
 
