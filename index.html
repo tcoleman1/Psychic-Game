@@ -2,12 +2,17 @@
 <html lang="en">
 
 <head>
+
 <title> Psychic Game </title> 
 </head>
 
 <body>
 
 <h1> WELCOME TO THE PSYCHIC GAME </h1>
+
+<img src = psychicgame.png>
+
+<h3> Enter a letter to play </h3>
 
   <div> 
 
@@ -17,118 +22,8 @@
     <p id="totalloses-text">                </p>
     <p id="guessesleft-text">               </p>
     <p id="lettersguessed-text">            </p> 
+ </div>
 
-  </div>
--->
-
-    <script type="text/javascript">
-
-     
-     var computerChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-        
-        
-    var userGuessText = document.getElementById("userguess-text");
-    var computerChoiceText = document.getElementById("computerchoice-Text");
-    var totalWins = document.getElementById("totalwins-text");
-    var totalLoses = document.getElementById("totalloses-text");
-    var guessesLeft = document.getElementById("guessesleft-text");
-    var lettersGuessedText = document.getElementById("lettersguessed-text");
-      
-      
-          var userScore = 0;
-          var computerScore = 0;
-          var numberOfGuesses = 5;
-          var lettersGuessed = [];
-
-             //function (newGame) {
-
-            //userScore = 0;
-           // computerScore = 0;
-
-
-      //  }
-        
-
-        document.onkeyup = function (event) {
-
-        
-
-        var userGuess = event.key;
-
-        var computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
-           
-
-            if (userGuess === computerGuess) {
-         
-
-                userScore++;
-
-                numberOfGuesses--;
-// I want to push user guess into the empty letters guessed array.
-                lettersGuessed.push(userGuess);
-            }
-
-            else  { 
-               
-                computerScore++;
-
-               numberOfGuesses--;
-
-               lettersGuessed.push(userGuess);
-               
-               if(numberOfGuesses === 0){
-
-                 userScore = 0;
-                 computerScore = 0;
-                 lettersGuessed = [];
-                 numberOfGuesses = 5;
-
-
-               }
-            }
-
-        userGuessText.textContent = "You chose: " + userGuess;
-        computerChoiceText.textContent = "Computer chose: " + computerGuess;
-        totalWins.textContent = "Wins: " + userScore;
-        totalLoses.textContent = "Loses: " + computerScore;
-        guessesLeft.textContent = "Guesses Left: " + numberOfGuesses;
-        lettersGuessedText.textContent = "Letters you guessed so far: " + lettersGuessed;
-
-
-           
-        };
-
-
-
-    </script>
-
-
-
-</body>
-
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
-
-</body>
-
-</html>
+ <script src= "assets/javascript/game.js"> </script>
+ </body>
+ </html>
