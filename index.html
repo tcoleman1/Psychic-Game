@@ -16,6 +16,7 @@
     <p id="totalwins-text">                 </p>
     <p id="totalloses-text">                </p>
     <p id="guessesleft-text">               </p>
+    <p id="lettersguessed-text">            </p> 
 
   </div>
 -->
@@ -31,52 +32,71 @@
     var totalWins = document.getElementById("totalwins-text");
     var totalLoses = document.getElementById("totalloses-text");
     var guessesLeft = document.getElementById("guessesleft-text");
-    
+    var lettersGuessedText = document.getElementById("lettersguessed-text");
       
       
           var userScore = 0;
           var computerScore = 0;
-          var guesses = 5;
+          var numberOfGuesses = 5;
+          var lettersGuessed = [];
+
+             //function (newGame) {
+
+            //userScore = 0;
+           // computerScore = 0;
 
 
+      //  }
         
 
-
         document.onkeyup = function (event) {
+
+        
 
         var userGuess = event.key;
 
         var computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
-
+           
 
             if (userGuess === computerGuess) {
          
 
-                    userScore++;
+                userScore++;
 
-                    guesses--;
-
+                numberOfGuesses--;
+// I want to push user guess into the empty letters guessed array.
+                lettersGuessed.push(userGuess);
             }
 
-            if (userGuess !== computerGuess) { 
+            else  { 
                
                 computerScore++;
 
+               numberOfGuesses--;
+
+               lettersGuessed.push(userGuess);
+               
+               if(numberOfGuesses === 0){
+
+                 userScore = 0;
+                 computerScore = 0;
+                 lettersGuessed = [];
+                 numberOfGuesses = 5;
+
+
+               }
             }
 
-        userGuessText.textContent = "You chose" + userGuess;
-        computerChoiceText.textContent = "Computer chose" + computerGuess;
-        totalWins.textContent = "Wins:" + userScore;
-        totalLoses.textContent = "Loses:" + computerScore;
+        userGuessText.textContent = "You chose: " + userGuess;
+        computerChoiceText.textContent = "Computer chose: " + computerGuess;
+        totalWins.textContent = "Wins: " + userScore;
+        totalLoses.textContent = "Loses: " + computerScore;
+        guessesLeft.textContent = "Guesses Left: " + numberOfGuesses;
+        lettersGuessedText.textContent = "Letters you guessed so far: " + lettersGuessed;
 
 
-
+           
         };
-
-       
-
-
-
 
 
 
